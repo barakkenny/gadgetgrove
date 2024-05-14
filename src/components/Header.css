@@ -1,11 +1,16 @@
 .header__container{
+    background-color: rgb(240, 240, 245);
+    /* background-color: #000; */
+    color: #000;
+}
+
+.header__content{
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: "Poppins", sans-serif;
-    margin: 1rem 6rem;
+    padding: 0.5rem 6rem
 }
-
 
 .nav__items > ul{
     display: flex;
@@ -19,10 +24,9 @@
     font-weight: 500;
 }
 
-.nav__items > ul > li:hover{
-    text-decoration: underline;
-    color: #39db4a;
-    cursor: pointer;
+.nav__items > ul > li > .nav-links{
+    text-decoration: none;
+    color: #000;
 }
 
 .nav__items__two{
@@ -42,5 +46,7 @@
     border: none;
     padding: 0.8rem 1.5rem;
     font-size: 15px;
+    background-color: transparent;
+    color: #fff;
 }
 

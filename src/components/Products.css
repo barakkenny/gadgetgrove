@@ -1,0 +1,19 @@
+.products__card__container{
+    margin: 5rem 2rem 0 3.4rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products__card__content{
+    width: 280px;
+    height: 300px;
+    /* border: 1px solid; */
+    margin: 1rem;
+}
+
+.products__image{
+    width: 280px;
+    height: 200px;
+    background-color: rgb(238, 238, 241);
+    padding-top: 1rem;
+}

@@ -1,6 +1,7 @@
 export const gadgetData = [{
     "id": 1,
     "name": " Acer Aspire 5 Slim Laptop",
+    "image": "samsung-uhd.png",
     "description": "RAM: 4GB, CPU Model Manufacturer: AMD Ryzen 3 3200U, CPU Speed: 3.5GHz, Hard disk size: 128GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Small",
     "price": 349.99,
     "countInStock": 8,
@@ -10,7 +11,8 @@ export const gadgetData = [{
 },
 {
     "id": 2,
-    "name": " Acer Aspire 5 Slim Laptop",
+    "name": 'Apple Macbook Pro 16" Laptop - M3 Pro Chip - 18GB 18-core GPU',
+    "image": "macbook-pro.png",
     "description": "RAM: 8GB, CPU Model Manufacturer: 10th Gen Intel Core i5-10210U, CPU Speed: 4.2GHz, Hard disk size: 256GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Home",
     "price": 579.99,
     "countInStock": 0,

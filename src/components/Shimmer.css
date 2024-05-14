@@ -1,12 +1,18 @@
 .shimmer__container{
-    display: flex;
-    margin: 2rem 6rem;
+  margin: 5rem 2rem 0 3.4rem;
+  display: flex;
+  flex-wrap: wrap;
   }
   
-  .shimmer__card{
+  .shimmer__card__content{
     margin: 20px;
     width: 320px;
     height: 300px;
+  }
+
+  .shimmer__background{
     background-color: rgb(240, 237, 237);
-    border-radius: 5px;
+    margin: 20px;
+    width: 320px;
+    height: 300px;
   }
