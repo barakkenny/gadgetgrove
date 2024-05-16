@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { gadgetData } from '../../utils/data';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import Practice from './Practice';
 
 
 function ProductDetails() {
@@ -19,15 +20,7 @@ function ProductDetails() {
     <div>
       {/* this is  product details page
       { product ? <div>{product.id}</div> : <p>Loading</p>} */}
-
-
-      <div className='routing'>
-        <h3>Client Side Routing</h3>
-      <Link to='/link'>this is a link tag</Link>
-
-      <h3>Server Side Routing</h3>
-      <a href="/link">this is an anchor tag</a>
-      </div>
+      <Practice  myName="kehinde" />
     </div>
   )
 }

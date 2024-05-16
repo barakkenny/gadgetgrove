@@ -5,7 +5,7 @@ import "./Body.css";
 import Shimmer from "./Shimmer";
 
 function Body() {
-  const [electronicStore, setElectronicStore] = useState(gadgetData);
+  const [electronicItems, setElectronicItems] = useState(gadgetData);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function Body() {
 
   function fetchGadgetData() {
    setTimeout(() => {
-    setElectronicStore(gadgetData.slice(0, 8));
+    setElectronicItems(gadgetData.slice(0, 8));
     setLoading(false)
    }, 3000); 
    
@@ -36,10 +36,14 @@ function Body() {
         </section>
       </section>
 
+      <div className="featured__products">
+        <h2>Featured Products</h2>
+      </div>
+
       <section className="items__card__container">
         {loading ? <Shimmer /> :
-            electronicStore.map((res) => {
-              const { id, name, image } = res;
+            electronicItems.map((electronicItem) => {
+              const { id, name, image } = electronicItem;
               return (
                 <Link to={`/products/${id}`} className="items__card__content" key={id}>
                   <img className="items__image" src={image} alt="" />

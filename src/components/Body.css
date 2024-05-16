@@ -43,8 +43,14 @@
     width: 600px;
 }
 
+.featured__products{
+    text-align: center;
+    margin-top: 4rem;
+    font-size: 21px;
+}
+
 .items__card__container{
-    margin: 5rem 2rem 0 3.4rem;
+    margin: 4rem 2rem 0 3.4rem;
     display: flex;
     flex-wrap: wrap;
 }

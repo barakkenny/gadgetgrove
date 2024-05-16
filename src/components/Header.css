@@ -1,7 +1,7 @@
 .header__container{
     background-color: rgb(240, 240, 245);
-    /* background-color: #000; */
-    color: #000;
+    background-color: #000;
+    color: #fff;
 }
 
 .header__content{
@@ -10,6 +10,11 @@
     align-items: center;
     font-family: "Poppins", sans-serif;
     padding: 0.5rem 6rem
+}
+
+.logo{
+    text-decoration: none;
+    color: #fff;
 }
 
 .nav__items > ul{
@@ -26,7 +31,7 @@
 
 .nav__items > ul > li > .nav-links{
     text-decoration: none;
-    color: #000;
+    color: #fff;
 }
 
 .nav__items__two{

@@ -1,6 +1,6 @@
 export const gadgetData = [{
     "id": 1,
-    "name": " Acer Aspire 5 Slim Laptop",
+    "name": " Samsung UHD TV",
     "image": "samsung-uhd.png",
     "description": "RAM: 4GB, CPU Model Manufacturer: AMD Ryzen 3 3200U, CPU Speed: 3.5GHz, Hard disk size: 128GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Small",
     "price": 349.99,

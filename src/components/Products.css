@@ -1,3 +1,25 @@
+.search__container{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+}
+
+.search{
+    width: 500px;
+    height: 40px;
+    border: 1.5px solid;
+    padding: 0 8px;
+}
+
+.search__btn{
+    padding: 0.3rem 3rem;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
 .products__card__container{
     margin: 5rem 2rem 0 3.4rem;
     display: flex;
@@ -7,7 +29,6 @@
 .products__card__content{
     width: 280px;
     height: 300px;
-    /* border: 1px solid; */
     margin: 1rem;
 }
 

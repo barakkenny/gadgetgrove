@@ -7,7 +7,7 @@ function Header() {
     <section className="header__container">
       <section className='header__content'>
     <section className="logo__container">
-      <h1 className="logo">GadgetGrove</h1>
+      <h1><Link to="/" className="logo">GadgetGrove</Link></h1>
     </section>
 
     <section className="nav__items">
