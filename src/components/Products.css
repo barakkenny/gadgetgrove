@@ -10,6 +10,23 @@
     height: 40px;
     border: 1.5px solid;
     padding: 0 8px;
+    position: relative;
+}
+
+.clear__search__text{
+    display: none;
+}
+
+.show__delete__icon{
+    position: absolute;
+    right: 37.5%;
+    top: 18.5%;
+    cursor: pointer;
+    padding: 0.5px 7px;
+}
+
+.show__delete__icon:hover{
+    background-color: rgb(235, 230, 230);
 }
 
 .search__btn{

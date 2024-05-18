@@ -33,6 +33,9 @@ function Product() {
       onChange={(e)=> setSearch(e.target.value)}
       value={search}
       />
+      <p  
+      onClick={()=> setSearch("")}
+      className={search === "" ? 'clear__search__text': 'show__delete__icon'}>x</p>
       <button onClick={handleSearch} className='search__btn' type='button'>Search</button>
       </section>
 

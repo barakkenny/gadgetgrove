@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { gadgetData } from '../../utils/data';
 import { useParams } from 'react-router-dom';
-import Practice from './Practice';
 
 
 function ProductDetails() {
@@ -16,11 +15,15 @@ function ProductDetails() {
   }, [productId]);
 
 
+
+
+
+
   return (
     <div>
       {/* this is  product details page
       { product ? <div>{product.id}</div> : <p>Loading</p>} */}
-      <Practice  myName="kehinde" />
+    
     </div>
   )
 }
