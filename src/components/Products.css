@@ -17,15 +17,16 @@
     display: none;
 }
 
-.show__delete__icon{
+.bx-x{
     position: absolute;
     right: 37.5%;
     top: 18.5%;
     cursor: pointer;
     padding: 0.5px 7px;
+    font-size: 20px;
 }
 
-.show__delete__icon:hover{
+.bx-x:hover{
     background-color: rgb(235, 230, 230);
 }
 

@@ -33,10 +33,11 @@ function Product() {
       onChange={(e)=> setSearch(e.target.value)}
       value={search}
       />
-      <p  
+      <i  onClick={()=> setSearch("")} className={ search === "" ? 'clear__search__text' :'bx bx-x'}></i>
+      {/* <p  
       onClick={()=> setSearch("")}
-      className={search === "" ? 'clear__search__text': 'show__delete__icon'}>x</p>
-      <button onClick={handleSearch} className='search__btn' type='button'>Search</button>
+      className={search === "" ? 'clear__search__text': 'show__delete__icon'}>x</p> */}
+       <button onClick={handleSearch} className='search__btn' type='button'>Search</button>
       </section>
 
       <section className='products__card__container'>
