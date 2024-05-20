@@ -1,43 +1,31 @@
-import { useState, useEffect } from 'react';
-import { gadgetData } from '../../utils/data';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import useProductDetails from '../../utils/useProductDetails';
+import "./ProductDetails.css";
 
 
 function ProductDetails() {
-  const [product, setProduct] = useState(null); 
-
-  const { productId } = useParams(); 
-
-  useEffect(() => {
-   
-    const selectedProduct = gadgetData.find(item => item.id === parseInt(productId));
-    setProduct(selectedProduct);
-  }, [productId]);
-
-
-
-
+  const ProductDetails = useProductDetails()
 
 
   return (
-    <div>
-      {/* this is  product details page
-      { product ? <div>{product.id}</div> : <p>Loading</p>} */}
+    <>
+      { ProductDetails ?
+       <section className='products__details__container'>
+        <section className='products__details__content'>  
+        <section>
+          <img src={ProductDetails.image} alt="" />
+        </section>
+        <section>{ProductDetails.name}</section>
+        <section>{ProductDetails.company}</section>
+        </section>
+        </section>
+      : <p>Loading</p>
+      
+      }
     
-    </div>
+    </>
   )
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

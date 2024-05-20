@@ -1,0 +1,8 @@
+.products__details__container{
+    margin : 4rem 3rem 0 3rem;
+}
+
+.products__details__content{
+    display: flex;
+    align-items: center;
+}
