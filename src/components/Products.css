@@ -1,0 +1,58 @@
+.search__container{
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 3rem;
+}
+
+.search{
+    width: 500px;
+    height: 40px;
+    border: 1.5px solid;
+    padding: 0 8px;
+    position: relative;
+}
+
+.clear__search__text{
+    display: none;
+}
+
+.bx-x{
+    position: absolute;
+    right: 37.5%;
+    top: 18.5%;
+    cursor: pointer;
+    padding: 0.5px 7px;
+    font-size: 20px;
+}
+
+.bx-x:hover{
+    background-color: rgb(235, 230, 230);
+}
+
+.search__btn{
+    padding: 0.3rem 3rem;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.products__card__container{
+    margin: 5rem 2rem 0 3.4rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.products__card__content{
+    width: 280px;
+    height: 300px;
+    margin: 1rem;
+}
+
+.products__image{
+    width: 280px;
+    height: 230px;
+    background-color: rgb(238, 238, 241);
+    padding-top: 1rem;
+}
