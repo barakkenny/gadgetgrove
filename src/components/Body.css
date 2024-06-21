@@ -9,14 +9,14 @@
 }
 
 .body__content > .content__one{
-    padding: 6rem 0 0 2rem;
+    margin: 7rem 0 0 4rem;
 }
 
 .content__one h2{
     max-width: 400px;
-    font-size: 40px;
-    line-height: 50px;
-    font-weight: 800;
+    font-size: 45px;
+    line-height: 60px;
+    font-weight: 900;
 }
 
 .content__one p {
@@ -24,7 +24,7 @@
     line-height: 25px;
     margin-top: 0.5rem;
     /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .shop__now{
@@ -50,7 +50,7 @@
 }
 
 .items__card__container{
-    margin: 4rem 2rem 0 3.4rem;
+    margin: 4rem 2rem 0 8rem;
     display: flex;
     flex-wrap: wrap;
 }

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { gadgetData } from "../utils/data";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Body.css";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 function Body() {
   const [electronicItems, setElectronicItems] = useState(gadgetData);
@@ -19,6 +20,9 @@ function Body() {
    }, 3000); 
    
   }
+
+  // const onlineStatus = useOnlineStatus();
+  // if(!onlineStatus) return <div>You are offline</div>
 
   return (
     <section className="body__container">

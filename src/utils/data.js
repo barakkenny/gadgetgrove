@@ -6,6 +6,12 @@ export const gadgetData = [{
     "price": 349.99,
     "countInStock": 8,
     "company": "Samsung",
+    "productDetailsImages": [
+        {"imageOne": "samsung-uhd.png"},
+        {"imageTwo": "samsung-uhd.png"},
+        {"imageThree": "samsung-uhd.png"},
+        {"imageFour": "samsung-uhd.png"},
+    ],
     "category": "Laptops & PC",
     "user": "5d7a514b5d2c12c7449be042"
 },
@@ -16,7 +22,7 @@ export const gadgetData = [{
     "description": "RAM: 8GB, CPU Model Manufacturer: 10th Gen Intel Core i5-10210U, CPU Speed: 4.2GHz, Hard disk size: 256GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Home",
     "price": 579.99,
     "countInStock": 0,
-    "company": "Acer",
+    "company": "Apple",
     "category": "Laptops & PC",
     "user": "5d7a514b5d2c12c7449be042"
 },

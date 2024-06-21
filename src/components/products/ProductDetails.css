@@ -5,4 +5,5 @@
 .products__details__content{
     display: flex;
     align-items: center;
+    gap: 3rem
 }
