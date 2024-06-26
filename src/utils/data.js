@@ -1,17 +1,17 @@
 export const gadgetData = [{
     "id": 1,
-    "name": " Samsung UHD TV",
+    "name": "Samsung UHD TV",
     "image": "samsung-uhd.png",
     "description": "RAM: 4GB, CPU Model Manufacturer: AMD Ryzen 3 3200U, CPU Speed: 3.5GHz, Hard disk size: 128GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Small",
     "price": 349.99,
     "countInStock": 8,
     "company": "Samsung",
-    "productDetailsImages": [
-        {"imageOne": "samsung-uhd.png"},
-        {"imageTwo": "samsung-uhd.png"},
-        {"imageThree": "samsung-uhd.png"},
-        {"imageFour": "samsung-uhd.png"},
-    ],
+    "productDetailsImages": {
+        "imageOne": "samsung-uhd.png",
+        "imageTwo": "iphone.jpg",
+        "imageThree": "samsung-uhd.png",
+        "imageFour": "samsung-uhd.png"
+    },
     "category": "Laptops & PC",
     "user": "5d7a514b5d2c12c7449be042"
 },
@@ -23,6 +23,12 @@ export const gadgetData = [{
     "price": 579.99,
     "countInStock": 0,
     "company": "Apple",
+    "productDetailsImages": {
+        "imageOne": "macbook-pro.png",
+        "imageTwo": "macbook-pro.png",
+        "imageThree": "macbook-pro.png",
+        "imageFour": "macbook-pro.png",
+    },
     "category": "Laptops & PC",
     "user": "5d7a514b5d2c12c7449be042"
 },
