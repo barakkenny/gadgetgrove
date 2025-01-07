@@ -1,10 +1,12 @@
-import React from 'react';
+import { useSelector } from "react-redux";
 import "./Header.css";
 import { Link } from 'react-router-dom';
 
 function Header() {
+const cartItems = useSelector((store) => store.cart.items)
+console.log(cartItems)
   return (
-    <section className="header__container">
+    <section className="header__container sticky top-0 z-50">
       <section className='header__content'>
     <section className="logo__container">
       <h1><Link to="/" className="logo">GadgetGrove</Link></h1>
@@ -20,8 +22,11 @@ function Header() {
     </section>
 
     <section className="nav__items__two">
-    <i className='bx bx-cart'></i>
-        <button className="contact" type="button"> <i className='bx bx-phone-call'></i>contact</button>
+    <div className='relative cursor-pointer'>
+    <Link to='/cart'><i className='bx bx-cart'></i></Link> 
+    <h4 className='absolute top-0 left-5 text-base bg-red-600 px-2 rounded-full'>{cartItems.length}</h4>
+    </div>
+      <button className="login" type="button"><Link to='/login'>Login</Link></button>
       </section>
       </section>
   </section>

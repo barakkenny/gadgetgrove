@@ -1,13 +1,21 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import useProductDetails from "../../utils/useProductDetails";
-import useOnlineStatus from "../../utils/useOnlineStatus";
+// import useOnlineStatus from "../../utils/useOnlineStatus";
 import "./ProductDetails.css";
+import Header from "../Header";
+import { MdStarRate } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { addItem } from "@/utils/cartSlice";
+
 
 function ProductDetails() {
   const [productDetailImageList, setProductDetailsImageList] = useState({});
   const [changeProductScreen, setChangeProductScreen] = useState(true)
   const [selectedImage, setSelectedImage] = useState(null)
   const productDetails = useProductDetails();
+  const [productsClick, setProductsClick] = useState(null);
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (productDetails && productDetails.productDetailsImages) {
@@ -15,17 +23,22 @@ function ProductDetails() {
     }
   }, [productDetails]);
 
-  const handleImageClick = (image) => {
+  const handleImageClick = (image, index) => {
     setSelectedImage(image);
     setChangeProductScreen(false)
-    setImageBorderColor(true)
+    // setProductsClick(index)
   };
+
+  const handleAddItem = (productDetails) => {
+   dispatch(addItem(productDetails))
+  }
 
   // const onlineStatus = useOnlineStatus();
   // if(!onlineStatus) return <div>You are offline</div>
 
   return (
     <>
+    <Header />
       <section className="products__details__container">
         <section className="products__details__content">
           <section className="product__details__image__container">
@@ -50,7 +63,7 @@ function ProductDetails() {
             />
             <img
             onClick={() => handleImageClick(productDetailImageList.imageFour)}
-              className="product__details__images"
+              className={`product__details__images`}
               src={`/${productDetailImageList.imageFour}`}
               alt="Product four"
             />
@@ -72,11 +85,27 @@ function ProductDetails() {
             
             </section>
 
-          <section>{productDetails.company}</section>
+          <section>
+            <h3>Brand: {productDetails.brand}</h3>
+            <h3>Model: {productDetails.name}</h3>
+            <h3>Availability: <span>Only {productDetails.countInStock} in Stock</span></h3>
+            <h2 className='mt-3 font-bold w-[600px]'>{productDetails.description}</h2>
+            <MdStarRate className='mt-2 text-yellow-500' />
+
+            <div className="mt-2">
+             <ul>
+              <li>This is the best computer you can get</li>
+              <li>This is the best computer you can get</li>
+              <li>This is the best computer you can get</li>
+              <li>This is the best computer you can get</li>
+             </ul>
+            </div>
+              <button className="bg-black text-white" onClick={()=>handleAddItem(productDetails.name)}>add</button>
+            </section>
         </section>
       </section>
-    </>
-  );
+      </>
+   );
 }
 
 export default ProductDetails;

@@ -1,3 +1,5 @@
+
+
 export const gadgetData = [{
     "id": 1,
     "name": "Samsung UHD TV",
@@ -5,7 +7,7 @@ export const gadgetData = [{
     "description": "RAM: 4GB, CPU Model Manufacturer: AMD Ryzen 3 3200U, CPU Speed: 3.5GHz, Hard disk size: 128GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Small",
     "price": 349.99,
     "countInStock": 8,
-    "company": "Samsung",
+    "brand": "Samsung",
     "productDetailsImages": {
         "imageOne": "samsung-uhd.png",
         "imageTwo": "iphone.jpg",
@@ -22,7 +24,7 @@ export const gadgetData = [{
     "description": "RAM: 8GB, CPU Model Manufacturer: 10th Gen Intel Core i5-10210U, CPU Speed: 4.2GHz, Hard disk size: 256GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Home",
     "price": 579.99,
     "countInStock": 0,
-    "company": "Apple",
+    "brand": "Apple",
     "productDetailsImages": {
         "imageOne": "macbook-pro.png",
         "imageTwo": "macbook-pro.png",
@@ -34,7 +36,8 @@ export const gadgetData = [{
 },
 {
     "id": 3,
-    "name": "ASUS VivoBook Thin and Light Laptop",
+    "name": "PlayStation 5 Digital Edition ",
+    "image": "ps5 edition.png",
     "description": "RAM: 8GB, CPU Model Manufacturer: Intel i3-1005G1 CPU, CPU Speed: 3.4GHz, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Small",
     "price": 399.99,
     "countInStock": 13,
@@ -45,11 +48,19 @@ export const gadgetData = [{
 
 {
     "id": 4,
-    "name": "ASUS VivoBook L203MA Ultra-Thin Laptop",
-    "description": "RAM: 4GB, CPU Model Manufacturer: Intel Celeron N4000, CPU Speed: 2.6GHz, Hard disk size: 64GB, Screen size: 11.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Home",
-    "price": 264.99,
+    "name": "Samsung Odyssey OLED G9 240Hz PC Screen",
+    "image": "samsung-ode.png",
+    "description": "Samsung Odyssey OLED G9 240Hz PC Screen, 0.03ms, OLED 1800R, Resolution 5120 x 1440, 1,000,000: 1.32:9, FreeSync Premium Pro, Compatble G-Sync, Smart, HDMI, DisplayPort, USB-C, Adjustable Stand",
+    "price": 2163.00,
     "countInStock": 13,
-    "company": "ASUS",
+    "brand": "SAMSUNG",
+    "model": "LS49CG954SUXEN",
+    "productDetailsImages": {
+        "imageOne": "samsung-ode.png",
+        "imageTwo": "samsung-ode2.png",
+        "imageThree": "samsung-ode3.png",
+        "imageFour": "samsung-ode4.jpg",
+    },
     "category": "Laptops & PC",
     "user": "5d7a514b5d2c12c7449be042"
 },
@@ -59,9 +70,10 @@ export const gadgetData = [{
     "description": "RAM: 12GB, CPU Model Manufacturer: 9th Gen Intel Core i5-9400T, CPU Speed: 3.4GHz, Hard disk size: 512GB, Screen size: 23.8 inches, Operating System: Windows 10 Home",
     "price": 798.99,
     "countInStock": 8000,
-    "company": "Acer",
+    "brand": "Acer",
     "category": "Laptops & PC",
-    "user": "5d7a514b5d2c12c7449be042"
+    "user": "5d7a514b5d2c12c7449be042",
+    "Model": "OLED"
 },
 {
     "id": 6,
@@ -71,7 +83,8 @@ export const gadgetData = [{
     "countInStock": 5,
     "company": "HP",
     "category": "Laptops & PC",
-    "user": "5d7a514b5d2c12c7449be042"
+    "user": "5d7a514b5d2c12c7449be042",
+    "Model": "LCD"
 },
 {
     "id": 7,
@@ -513,4 +526,52 @@ export const gadgetData = [{
     "category": "Other",
     "user": "5d7a514b5d2c12c7449be042"
 }
+]
+
+export const samsungTv = [
+    {
+        "id": 1,
+        "name": "SAMSUNG 65-Inch UHD DU8000",
+        "image": "samsung-du8000.jpg",
+        "description": "SAMSUNG 65-Inch Class 4K Crystal UHD DU8000 Series HDR Smart TV w/Object Tracking Sound Lite, Motion Xcelerator, Ultra Slim Design, Gaming Hub, Alexa Built-in (UN65DU8000, 2024 Model)",
+        "price": 575.99,
+        "countInStock": 5,
+        "brand": "Samsung",
+        "productDetailsImages": {
+            "imageOne": "samsung-uhd.png",
+            "imageTwo": "iphone.jpg",
+            "imageThree": "samsung-uhd.png",
+            "imageFour": "samsung-uhd.png"
+        },
+        "category": "TV",
+    },
+    {
+        "id": 2,
+        "name": 'Apple Macbook Pro 16" Laptop - M3 Pro Chip - 18GB 18-core GPU',
+        "image": "macbook-pro.png",
+        "description": "RAM: 8GB, CPU Model Manufacturer: 10th Gen Intel Core i5-10210U, CPU Speed: 4.2GHz, Hard disk size: 256GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Home",
+        "price": 579.99,
+        "countInStock": 0,
+        "brand": "Apple",
+        "productDetailsImages": {
+            "imageOne": "macbook-pro.png",
+            "imageTwo": "macbook-pro.png",
+            "imageThree": "macbook-pro.png",
+            "imageFour": "macbook-pro.png",
+        },
+        "category": "Laptops & PC",
+        "user": "5d7a514b5d2c12c7449be042"
+    },
+]
+
+export const homePageGadget = [
+    {id: 1, img: 'home-tv.png'},
+    {id: 2, img: 'home-camera.png'},
+    {id: 3, img: 'home-watch.png'},
+    {id: 4, img: 'home-headset.png'},
+    {id: 5, img: 'earpod.png'},
+    {id: 6, img: 'home-radio.png'},
+    {id: 7, img: 'home-laptop.png'},
+    {id: 8, img: 'home-mouse.png'},
+
 ]
