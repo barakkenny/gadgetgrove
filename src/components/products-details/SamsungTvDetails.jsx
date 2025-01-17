@@ -1,65 +1,62 @@
-import { useState, useEffect } from "react";
+import {useState, useEffect} from 'react'
 import useProductDetails from "../../utils/useProductDetails";
-// import useOnlineStatus from "../../utils/useOnlineStatus";
 import "./ProductDetails.css";
 import Header from "../Header";
 import { MdStarRate } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "@/utils/cartSlice";
-import { gadgetData } from "@/utils/data";
-import {incrementItem, decrementItem} from "@/utils/itemSlice"
+import { samsungTv } from '@/utils/data';
+import {incrementItem, decrementItem} from "@/utils/itemSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
 
-function ProductDetails() {
+const SamsungTvDetails = () => {
   const [productDetailImageList, setProductDetailsImageList] = useState({});
   const [changeProductScreen, setChangeProductScreen] = useState(true)
-  const [selectedImage, setSelectedImage] = useState(null);
-  // const [count, setCount] = useState(1);
-  // const [productsClick, setProductsClick] = useState(null);
-  // const [isDisabled, setIsDisabled] = useState(false)
-  
+  const [selectedImage, setSelectedImage] = useState(null)
 
-  const productDetails = useProductDetails(gadgetData, 'gadget');
-  const dispatch = useDispatch()
+    const productDetails = useProductDetails(samsungTv, 'tv');
+    const dispatch = useDispatch()
 
   const cartItems = useSelector((store) => store.cart.items)
   const count = useSelector((store) => store.itemQuantity.value)
+  
+    useEffect(() => {
+      if (productDetails && productDetails.productDetailsImages) {
+        setProductDetailsImageList(productDetails.productDetailsImages);
+      }
+    }, [productDetails]);
 
-  useEffect(() => {
-    if (productDetails && productDetails.productDetailsImages) {
-      setProductDetailsImageList(productDetails.productDetailsImages);
-    }
-  }, [productDetails]);
-
-  const handleImageClick = (image, index) => {
-    setSelectedImage(image);
-    setChangeProductScreen(false)
-    // setProductsClick(index)
-  };
-
-  const isInCart = cartItems.some((item) => item.id === productDetails.id);
-
-  const handleAddItem = (productDetails) => {
+    const handleImageClick = (image) => {
+        setSelectedImage(image);
+        setChangeProductScreen(false)
+        // setProductsClick(index)
+      };
     
-    if (!isInCart && count > 0) {
-      dispatch(addItem(productDetails));
-    } 
-  }
+      // const handleAddItem = (productDetails) => {
+      //  dispatch(addItem(productDetails))
+      // }
 
-  const handleItemIncrement = ()=> {
-    if(!isInCart) {
-      dispatch(incrementItem())
-    }
-  }
-
-
-  const handleItemDecrement = ()=> {
-    if(!isInCart) {
-      dispatch(decrementItem())
-    }
-  }
-  // const onlineStatus = useOnlineStatus();
-  // if(!onlineStatus) return <div>You are offline</div>
+      const isInCart = cartItems.some((item) => item.id === productDetails.id);
+      
+        const handleAddItem = (productDetails) => {
+          
+          if (!isInCart && count > 0) {
+            dispatch(addItem(productDetails));
+          } 
+        }
+      
+        const handleItemIncrement = ()=> {
+          if(!isInCart) {
+            dispatch(incrementItem())
+          }
+        }
+      
+      
+        const handleItemDecrement = ()=> {
+          if(!isInCart) {
+            dispatch(decrementItem())
+          }
+        }
 
   return (
     <>
@@ -110,7 +107,7 @@ function ProductDetails() {
             
             </section>
 
-          <section>
+            <section>
             <h3>Brand: {productDetails.brand}</h3>
             <h3>Model: {productDetails.name}</h3>
             <h3>Availability: <span>Only {productDetails.countInStock} in Stock</span></h3>
@@ -133,17 +130,15 @@ function ProductDetails() {
                 <button onClick={handleItemIncrement} className="text-lg font-bold px-4 border-l-2">+</button>
               </div>
               <div className='flex gap-6'>
-              <Link to='/buy-now'><button className='bg-black text-white px-7 py-3 cursor-pointer'>Buy Now</button></Link>
-            <button disabled={isInCart} className='bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' onClick={()=>handleAddItem(productDetails)}>Add to Cart</button>
+            <Link to='/buy-now'><button disabled={isInCart} className='bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' onClick={()=>handleAddItem(productDetails)}>Add to Cart</button></Link>
             </div>
             </div>
 
             </section>
         </section>
-        
       </section>
       </>
-   ); 
+  )
 }
 
-export default ProductDetails;
+export default SamsungTvDetails

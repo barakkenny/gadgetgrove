@@ -1,18 +1,25 @@
 import { useState, useEffect} from 'react';
 import { gadgetData } from './data';
 import { useParams } from 'react-router-dom';
+import {samsungTv} from './data'
 
-const useProductDetails = () => {
-    const [product, setProduct] = useState(gadgetData); 
+const useProductDetails = (data, type) => {
+    const [selectedProduct, setSelectedProduct] = useState(gadgetData); 
+    const [diffProduct, setDiffProduct] = useState(samsungTv)
 
   const { productId } = useParams(); 
 
-  useEffect(() => { 
-    const selectedProduct = gadgetData.find(item => item.id === parseInt(productId));
-    setProduct(selectedProduct);
-  }, [productId]);
+  useEffect(() => {
+    if (type === 'gadget') {
+      const product = data.find(item => item.id === parseInt(productId));
+      setSelectedProduct(product);
+    } else if (type === 'tv') {
+      const product = data.find(item => item.id === parseInt(productId));
+      setSelectedProduct(product);
+    }
+  }, [productId, data, type]);
 
-  return product;
+  return selectedProduct
 }
 
 export default useProductDetails

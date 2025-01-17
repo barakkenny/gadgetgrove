@@ -7,10 +7,10 @@ const Samsung = () => {
       {samsungTv.map((sam) => {
         const { id, name, image } = sam;
         return (
-          <section className="w-[280px] h-[300px] m-2 bg-[#eeeef1]" key={id}>
-            <img className="w-[280px] h-[230px]" src={image} alt="samsung-tv" />
+          <section className="w-[280px] h-[300px]" key={id}>
+            <img className="w-[280px] h-[230px] bg-[#eeeef1]" src={image} alt="samsung-tv" />
             <section className="">
-              <Link to={`/products/${id}`}>{name}</Link>
+              <Link to={`/samsung-tv/${id}`}>{name}</Link>
             </section>
           </section>
         );

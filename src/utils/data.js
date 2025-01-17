@@ -23,7 +23,7 @@ export const gadgetData = [{
     "image": "macbook-pro.png",
     "description": "RAM: 8GB, CPU Model Manufacturer: 10th Gen Intel Core i5-10210U, CPU Speed: 4.2GHz, Hard disk size: 256GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Home",
     "price": 579.99,
-    "countInStock": 0,
+    "countInStock": 10,
     "brand": "Apple",
     "productDetailsImages": {
         "imageOne": "macbook-pro.png",
@@ -531,14 +531,14 @@ export const gadgetData = [{
 export const samsungTv = [
     {
         "id": 1,
-        "name": "SAMSUNG 65-Inch UHD DU8000",
-        "image": "samsung-du8000.jpg",
+        "name": "SAMSUNG 55-Inch Class Crystal UHD 4K",
+        "image": "samsung-55-inch-business-pro.jpg",
         "description": "SAMSUNG 65-Inch Class 4K Crystal UHD DU8000 Series HDR Smart TV w/Object Tracking Sound Lite, Motion Xcelerator, Ultra Slim Design, Gaming Hub, Alexa Built-in (UN65DU8000, 2024 Model)",
         "price": 575.99,
         "countInStock": 5,
         "brand": "Samsung",
         "productDetailsImages": {
-            "imageOne": "samsung-uhd.png",
+            "imageOne": "samsung-55-inch-business-pro.jpg",
             "imageTwo": "iphone.jpg",
             "imageThree": "samsung-uhd.png",
             "imageFour": "samsung-uhd.png"
@@ -547,7 +547,7 @@ export const samsungTv = [
     },
     {
         "id": 2,
-        "name": 'Apple Macbook Pro 16" Laptop - M3 Pro Chip - 18GB 18-core GPU',
+        "name": 'samsung new tv',
         "image": "macbook-pro.png",
         "description": "RAM: 8GB, CPU Model Manufacturer: 10th Gen Intel Core i5-10210U, CPU Speed: 4.2GHz, Hard disk size: 256GB, Screen size: 15.6 inches, RAM type: DDR4 SDRAM, Operating System: Windows 10 Home",
         "price": 579.99,

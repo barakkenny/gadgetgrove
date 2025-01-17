@@ -1,12 +1,14 @@
 import { useState, useEffect} from 'react';
 import { gadgetData } from '../utils/data';
-import { Link } from 'react-router-dom';
 import './Products.css'
 import Header from './Header';
 import { LuTv } from "react-icons/lu";
-import Phones from './sidebar-tabs/Phones';
+import Phones from './sidebar-tabs/Phones'
 import Television from './sidebar-tabs/Television';
 import AllProduct from './AllProduct';
+import Laptop from './sidebar-tabs/Laptop';
+import Camera from './sidebar-tabs/Camera'
+import SmartWatch from './sidebar-tabs/SmartWatch';
 
 function Product() {
   const [products, setProducts] = useState(gadgetData);
@@ -34,18 +36,22 @@ function Product() {
         item.name.toLowerCase().includes(search));
       setFilteredProducts(searchProducts)
     }
-
+    const handleTvClick = () => {
+      setActiveTab('television')
+      if(activePage === 'television') return <Television />
+      
+    }
 
   return (
     <section>
       <Header />
       <section className='search__container'>
 
-      <section className='w-[15%] pt-12 pl-14 border-2 h-max'>
+      <section className='w-[15%] flex flex-col gap-8 pt-20 pl-5 border-r-2 h-screen'>
         <section className=' cursor-pointer'>
           <div className='flex items-center gap-6'>
           <LuTv />
-          <h3 onClick={() => setActiveTab("television")}>Television</h3>
+          <h3 onClick={ handleTvClick }>Television</h3>
           </div>
         </section>
 
@@ -53,6 +59,34 @@ function Product() {
         <div className='flex items-center gap-6'>
           <LuTv />
           <h3 onClick={() => setActiveTab("phone")}>Phones</h3>
+          </div>
+        </section>
+
+        <section className='pt-4 cursor-pointer'>
+        <div className='flex items-center gap-6'>
+          <LuTv />
+          <h3 onClick={() => setActiveTab("laptop")}>Laptop</h3>
+          </div>
+        </section>
+
+        <section className='pt-4 cursor-pointer'>
+        <div className='flex items-center gap-6'>
+          <LuTv />
+          <h3 onClick={() => setActiveTab("camera")}>Camera</h3>
+          </div>
+        </section>
+
+        <section className='pt-4 cursor-pointer'>
+        <div className='flex items-center gap-6'>
+          <LuTv />
+          <h3 onClick={() => setActiveTab("smartwatch")}>Smartwatch</h3>
+          </div>
+        </section>
+
+        <section className='pt-4 cursor-pointer'>
+        <div className='flex items-center gap-6'>
+          <LuTv />
+          <h3 onClick={() => setActiveTab("headphone")}>Headphone</h3>
           </div>
         </section>
 
@@ -73,9 +107,11 @@ function Product() {
 
         {/* PRODUCT CATEGORY */}
       <section>
-       {activeTab === 'television' && <Television activePage={activePage} setActivePage={setActivePage} /> }
-          
+       {activeTab === 'television' && <Television activePage={activePage} setActivePage={setActivePage} /> }          
        {activeTab === 'phone' && <Phones activePage={activePage} setActivePage={setActivePage} /> }
+       {activeTab === 'laptop' && <Laptop activePage={activePage} setActivePage={setActivePage} /> }
+       {activeTab === 'camera' && <Camera activePage={activePage} setActivePage={setActivePage} /> }
+       {activeTab === 'smartwatch' && <SmartWatch activePage={activePage} setActivePage={setActivePage} /> }
        </section>
 
      {activePage === 'allProduct' && (

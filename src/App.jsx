@@ -1,14 +1,16 @@
 import React, {Suspense} from 'react'
 import './App.css'
-import Products from "./components/Products.jsx";
 import ErrorPage from "./components/ErrorPage.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from './components/Login.jsx';
 
 
 const Body = React.lazy(()=> import("./components/Body"));
+const Products = React.lazy(()=> import("./components/Products"))
 const ProductDetails = React.lazy(()=> import("./components/products-details/ProductDetails"))
 const Cart = React.lazy(()=> import('./components/Cart'))
+const SamsungTvDetails = React.lazy(()=> import("./components/products-details/SamsungTvDetails") )
+const BuyNow = React.lazy(()=> import("./components/BuyNow"))
 
 const appRouter = createBrowserRouter([
   
@@ -45,6 +47,14 @@ const appRouter = createBrowserRouter([
         ),
       },
       {
+        path: "/buy-now",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <BuyNow />
+          </Suspense>
+        ),
+      },
+      {
         path: "/products/:productId",
         element: (
             <Suspense fallback={<div>Loading...</div>}>
@@ -54,6 +64,16 @@ const appRouter = createBrowserRouter([
       
     errorElement: <ErrorPage />
   },
+  {
+    path: "/samsung-tv/:productId",
+    element: (
+        <Suspense fallback={<div>Loading...</div>}>
+          <SamsungTvDetails />
+        </Suspense>
+    ),
+  
+errorElement: <ErrorPage />
+},
 ]);
 
 
