@@ -9,13 +9,17 @@ import { addItem } from "@/utils/cartSlice";
 import { gadgetData } from "@/utils/data";
 import {incrementItem, decrementItem} from "@/utils/itemSlice"
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import ItemAdded from "../notifications/ItemAdded";
+import ItemInCart from "../notifications/ItemInCart";
 
 function ProductDetails() {
   const [productDetailImageList, setProductDetailsImageList] = useState({});
   const [changeProductScreen, setChangeProductScreen] = useState(true)
   const [selectedImage, setSelectedImage] = useState(null);
-  // const [count, setCount] = useState(1);
-  // const [productsClick, setProductsClick] = useState(null);
+  const [addedToCart, setAddedToCart] = useState(false);
+  // const [onHover, setOnHover] = useState(false)
+  // const [onBuyNowHover, setOnBuNowHover] = useState(false)
   // const [isDisabled, setIsDisabled] = useState(false)
   
 
@@ -31,7 +35,7 @@ function ProductDetails() {
     }
   }, [productDetails]);
 
-  const handleImageClick = (image, index) => {
+  const handleImageClick = (image) => {
     setSelectedImage(image);
     setChangeProductScreen(false)
     // setProductsClick(index)
@@ -43,7 +47,13 @@ function ProductDetails() {
     
     if (!isInCart && count > 0) {
       dispatch(addItem(productDetails));
+      setAddedToCart(true)
+      setTimeout(() => {
+        setAddedToCart(false)
+      }, 2000)
     } 
+
+
   }
 
   const handleItemIncrement = ()=> {
@@ -61,10 +71,11 @@ function ProductDetails() {
   // const onlineStatus = useOnlineStatus();
   // if(!onlineStatus) return <div>You are offline</div>
 
+
   return (
     <>
     <Header />
-      <section className="products__details__container">
+      <section className={`products__details__container ${addedToCart && 'opacity-2'}`}>
         <section className="products__details__content">
           <section className="product__details__image__container">
             <img
@@ -133,14 +144,18 @@ function ProductDetails() {
                 <button onClick={handleItemIncrement} className="text-lg font-bold px-4 border-l-2">+</button>
               </div>
               <div className='flex gap-6'>
-              <Link to='/buy-now'><button className='bg-black text-white px-7 py-3 cursor-pointer'>Buy Now</button></Link>
-            <button disabled={isInCart} className='bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' onClick={()=>handleAddItem(productDetails)}>Add to Cart</button>
+              <Link to='/buy-now'><button className={`bg-black text-white px-7 py-3 cursor-pointer`}>Buy Now</button></Link>
+            <motion.button className={`bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer `} onClick={()=>handleAddItem(productDetails)} >Add to Cart</motion.button>
             </div>
             </div>
 
             </section>
+            
         </section>
-        
+        <div>
+        {addedToCart &&
+        <div><ItemAdded /></div> }
+        </div>
       </section>
       </>
    ); 

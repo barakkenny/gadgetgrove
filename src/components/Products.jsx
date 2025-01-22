@@ -16,6 +16,7 @@ function Product() {
   const [search, setSearch] = useState("");
   const [activeTab, setActiveTab] = useState(null);
   const [activePage, setActivePage] = useState('allProduct')
+  const [showTvProduct, setShowTvProduct] = useState(false)
   // const [productsClick, setProductsClick] = useState(null);
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function Product() {
     }
     const handleTvClick = () => {
       setActiveTab('television')
-      if(activePage === 'television') return <Television />
+     setShowTvProduct(true)
       
     }
 
@@ -125,8 +126,11 @@ function Product() {
               )
             })
           }
-          </section>) 
+          </section>
+          )
     }
+
+    
           </section>
           </section>
     </section>

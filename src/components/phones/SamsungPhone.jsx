@@ -1,10 +1,10 @@
-import React from 'react'
+import { motion } from 'framer-motion'
 
 const SamsungPhone = () => {
   return (
-    <div>
+    <motion.section initial={{y: 100}} animate={{y: 0}} transition={{duration: 1}}>
       Samsung phone
-    </div>
+    </motion.section>
   )
 }
 

@@ -1,9 +1,10 @@
 import { samsungTv } from "@/utils/data";
 import { Link } from "react-router-dom";
+import { motion } from 'framer-motion'
 
 const Samsung = () => {
   return (
-    <section className="mt-10 flex flex-wrap items-center justify-center gap-10">
+    <motion.section initial={{y: 100}} animate={{y: 0}} transition={{duration: 1}} className="mt-10 flex flex-wrap items-center justify-center gap-10">
       {samsungTv.map((sam) => {
         const { id, name, image } = sam;
         return (
@@ -15,7 +16,7 @@ const Samsung = () => {
           </section>
         );
       })}
-    </section>
+    </motion.section>
   );
 };
 

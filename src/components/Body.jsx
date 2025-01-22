@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer";
 // import useOnlineStatus from "../utils/useOnlineStatus";
 import Header from "./Header";
 import { homePageGadget } from "../utils/data";
+import { motion } from 'framer-motion'
 
 
 function Body() {
@@ -33,17 +34,17 @@ function Body() {
   <Header />
     <section className="body__container">
       <section className="body__content">
-        <section className="content__one">
+        <motion.section initial={{y: -100}} animate={{y: 0}} transition={{duration: 2}} className="content__one">
           <h2>Your One-Stop Electronic Market</h2>
           <p>
             Welcome to e-shop, a place where you can buy everything about
             electronics. <br/>Sale every day!
           </p>
           <button className="shop__now" type="button">Shop Now</button>
-        </section>
-        <section className="content__two">
+        </motion.section>
+        <motion.section initial={{x: 100}} animate={{x: 0}} transition={{duration: 2}} className="content__two">
           <img className="gadget__image" src="Gadget.png" alt="electronics images" />
-        </section>
+        </motion.section>
       </section>
 
       <div className="featured__products">

@@ -1,24 +1,32 @@
+import {useEffect, useState} from 'react'
 import { useSelector } from "react-redux"
-
+import useProductDetails from "@/utils/useProductDetails"
+import { gadgetData } from "@/utils/data"
 
 const BuyNow = () => {
+  const [displayProduct, setDisplayProduct] = useState([])
 
-    const cartItems = useSelector((store) => store.cart.items)
+  const products = useProductDetails(gadgetData, 'gadget');
+  console.log(products)
+   useEffect(()=> {
+      if(products) {
+        setDisplayProduct(products)
+      }
+   },[products])
 
 
   return (
     <section>
-      {/* {cartItems.length === 0 ? 
-      <h3>Your cart is empty</h3> :
-      cartItems.map((items) => {
-        const {id, image, name, price} = items
-        return <section key={id}>
-            <img src={image} alt="item-image" />
-            <h3>{name}</h3>
-            <p>{price}</p>
-        </section>
-      })
-      } */}
+      
+      <section>
+        <ul>
+              <li>
+                <h2>{displayProduct?.name}</h2>
+                <p></p>
+                <img src={displayProduct?.image} alt='product-image' />
+              </li>
+        </ul>
+      </section>
     </section>
   )
 }
