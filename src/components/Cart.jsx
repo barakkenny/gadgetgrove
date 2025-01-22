@@ -32,10 +32,6 @@ const Cart = () => {
     localStorage.setItem('items', JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // const animation = {
-  //   scale: [0, 1.1],
-  //   x: [0, -100],
-  // }
 
   return (
     <section> 
