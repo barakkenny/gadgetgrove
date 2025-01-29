@@ -9,7 +9,7 @@ import { addItem } from "@/utils/cartSlice";
 import { gadgetData } from "@/utils/data";
 import {incrementItem, decrementItem} from "@/utils/itemSlice"
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useTransform } from 'framer-motion'
 import ItemAdded from "../notifications/ItemAdded";
 import ItemInCart from "../notifications/ItemInCart";
 
@@ -18,7 +18,7 @@ function ProductDetails() {
   const [changeProductScreen, setChangeProductScreen] = useState(true)
   const [selectedImage, setSelectedImage] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
-  // const [onHover, setOnHover] = useState(false)
+  const [onHover, setOnHover] = useState(false)
   // const [onBuyNowHover, setOnBuNowHover] = useState(false)
   // const [isDisabled, setIsDisabled] = useState(false)
   
@@ -28,6 +28,7 @@ function ProductDetails() {
 
   const cartItems = useSelector((store) => store.cart.items)
   const count = useSelector((store) => store.itemQuantity.value)
+  const isDisabled = count <= 0;
 
   useEffect(() => {
     if (productDetails && productDetails.productDetailsImages) {
@@ -53,12 +54,12 @@ function ProductDetails() {
       }, 2000)
     } 
 
-
   }
+  
 
-  const handleItemIncrement = ()=> {
+  const handleItemIncrement = (id)=> {
     if(!isInCart) {
-      dispatch(incrementItem())
+      dispatch(incrementItem(id))
     }
   }
 
@@ -68,6 +69,7 @@ function ProductDetails() {
       dispatch(decrementItem())
     }
   }
+
   // const onlineStatus = useOnlineStatus();
   // if(!onlineStatus) return <div>You are offline</div>
 
@@ -117,7 +119,9 @@ function ProductDetails() {
               alt="Selected Product"
           /> 
             )}
-          {changeProductScreen && <img className="product__screen" src={`/${productDetailImageList.imageOne}`}/> }
+          {changeProductScreen && <motion.div animate={{rotateY: 360}}
+              transition={{duration: 5, repeat: Infinity, ease: 'easeInOut'}}><img className="product__screen" src={`/${productDetailImageList.imageOne}`}/></motion.div> 
+          }
             
             </section>
 
@@ -141,11 +145,11 @@ function ProductDetails() {
               <div className="flex gap-4 border-2  py-2">
                 <button onClick={handleItemDecrement} className="text-lg font-bold px-4 border-r-2">-</button>
                 <h3 className="text-lg font-bold px-4">{count}</h3>
-                <button onClick={handleItemIncrement} className="text-lg font-bold px-4 border-l-2">+</button>
+                <button onClick={()=> handleItemIncrement(productDetails.id)} className="text-lg font-bold px-4 border-l-2">+</button>
               </div>
               <div className='flex gap-6'>
-              <Link to='/buy-now'><button className={`bg-black text-white px-7 py-3 cursor-pointer`}>Buy Now</button></Link>
-            <motion.button className={`bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer `} onClick={()=>handleAddItem(productDetails)} >Add to Cart</motion.button>
+              <Link to={isDisabled ? "#" : "/buy-now"}><button onClick={(e) => isDisabled && e.preventDefault()} className={` ${onHover ? 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' : 'bg-black text-white px-7 py-3 cursor-pointer'}`} onMouseOver={()=>setOnHover(true)} onMouseLeave={()=> setOnHover(false)}>Buy Now</button></Link>
+            <motion.button whileTap={{scale: 0.8, backgroundColor: 'crimson', border: 'none'}} transition={{type: 'spring', stiffness: 300}} className={`${onHover ? 'bg-black text-white px-5 py-2.5': 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer'} `} onClick={()=>handleAddItem(productDetails)}>Add to Cart</motion.button>
             </div>
             </div>
 
@@ -161,4 +165,4 @@ function ProductDetails() {
    ); 
 }
 
-export default ProductDetails;
+export default ProductDetails

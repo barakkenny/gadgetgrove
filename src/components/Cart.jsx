@@ -9,14 +9,13 @@ const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((store) => store.cart.items)
   const count = useSelector((store) => store.itemQuantity.value)
-  console.log('Cart Items:', cartItems)
-  console.log('number of item', count)
-  
-  const totalAmount = cartItems.map((item) => item.price)
-  const getTotalAmountInCart = totalAmount.reduce((acc, curr) => {
+  // const r = count + cartItems.id
+  const amountInCart = cartItems.map((item) => item.price)
+  const getTotalAmountInCart = amountInCart.reduce((acc, curr) => {
       return  acc + curr
    }, 0)
-  console.log(getTotalAmountInCart)
+
+   const totalAmount = getTotalAmountInCart.toFixed(2)
 
   const handleRemoveFromCart = (id) => {
     dispatch(removeItem(id));
@@ -44,7 +43,7 @@ const Cart = () => {
 
         <>
         <Header />
-        <section className="px-20 mt-10">
+        <section className="px-20 mt-10" >
           <ul className=''> 
             <h2>My Cart Content</h2>
           {cartItems.map((item) => {
@@ -55,7 +54,7 @@ const Cart = () => {
               <div>
               <h2>{name}</h2>
               <h3>$ {price * count}</h3>
-              <h3>Item Quantity - {count}</h3>
+              <h3>Item Quantity - {count * count}</h3>
               <button onClick={() => handleRemoveFromCart(id)}>Remove</button>
               </div>            
             </motion.li>
@@ -64,7 +63,7 @@ const Cart = () => {
           </ul>
           <button onClick={handleClearCart}>Clear Cart</button> 
           <div>
-           Total Item - ${getTotalAmountInCart * count}
+           Total Item - ${totalAmount * count}
           </div>
           </section>
           

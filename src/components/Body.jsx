@@ -71,9 +71,9 @@ function Body() {
         {homePageGadget.map((home) => {
           const {id, img } = home
           return (
-            <section key={id} className="w-[280px] h-[300px]">
+            <motion.section whileInView={{scale: [1.1, 1]}} transition={{duration: 2}} key={id} className="w-[280px] h-[300px]">
               <img src={img} alt="gadget" className="w-[280px] height-[230px] bg-[#eeeef1]" />
-            </section>
+            </motion.section>
           )
         })}
       </section>
