@@ -27,8 +27,8 @@ export const gadgetData = [{
     "brand": "Apple",
     "productDetailsImages": {
         "imageOne": "macbook-pro.png",
-        "imageTwo": "macbook-pro.png",
-        "imageThree": "macbook-pro.png",
+        "imageTwo": "macbook-two.png",
+        "imageThree": "macbook-three.png",
         "imageFour": "macbook-pro.png",
     },
     "category": "Laptops & PC",

@@ -9,7 +9,7 @@ import { addItem } from "@/utils/cartSlice";
 import { gadgetData } from "@/utils/data";
 import {incrementItem, decrementItem} from "@/utils/itemSlice"
 import { Link } from 'react-router-dom'
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import ItemAdded from "../notifications/ItemAdded";
 import ItemInCart from "../notifications/ItemInCart";
 
