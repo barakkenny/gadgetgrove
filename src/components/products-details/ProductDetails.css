@@ -55,7 +55,6 @@
     flex-direction: column;
     width: 100px;
     cursor: pointer;
-    /* border: 1px solid red; */
     margin-top: 1rem;
     padding: .5rem;
 }

@@ -8,18 +8,21 @@ import { samsungTv } from '@/utils/data';
 import {incrementItem, decrementItem} from "@/utils/itemSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
+import {motion} from 'framer-motion'
 
 const SamsungTvDetails = () => {
   const [productDetailImageList, setProductDetailsImageList] = useState({});
   const [changeProductScreen, setChangeProductScreen] = useState(true)
   const [selectedImage, setSelectedImage] = useState(null)
+  const [onHover, setOnHover] = useState(false)
 
     const productDetails = useProductDetails(samsungTv, 'tv');
     const dispatch = useDispatch()
 
   const cartItems = useSelector((store) => store.cart.items)
   const count = useSelector((store) => store.itemQuantity.value)
-  
+  const isDisabled = count <= 0;
+
     useEffect(() => {
       if (productDetails && productDetails.productDetailsImages) {
         setProductDetailsImageList(productDetails.productDetailsImages);
@@ -37,7 +40,7 @@ const SamsungTvDetails = () => {
       // }
 
       const isInCart = cartItems.some((item) => item.id === productDetails.id);
-      
+       
         const handleAddItem = (productDetails) => {
           
           if (!isInCart && count > 0) {
@@ -130,7 +133,8 @@ const SamsungTvDetails = () => {
                 <button onClick={handleItemIncrement} className="text-lg font-bold px-4 border-l-2">+</button>
               </div>
               <div className='flex gap-6'>
-            <Link to='/buy-now'><button disabled={isInCart} className='bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' onClick={()=>handleAddItem(productDetails)}>Add to Cart</button></Link>
+              <Link to={isDisabled ? "#" : "/buy-now"}><button onClick={(e) => isDisabled && e.preventDefault()} className={` ${onHover ? 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' : 'bg-black text-white px-7 py-3 cursor-pointer'}`} onMouseOver={()=>setOnHover(true)} onMouseLeave={()=> setOnHover(false)}>Buy Now</button></Link>
+            <motion.button whileTap={{scale: 0.8, backgroundColor: 'crimson', border: 'none'}} transition={{type: 'spring', stiffness: 300}} className={`${onHover ? 'bg-black text-white px-5 py-2.5': 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer'} `} onClick={()=>handleAddItem(productDetails)}>Add to Cart</motion.button>
             </div>
             </div>
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import useProductDetails from "../../utils/useProductDetails";
+// import useProductDetails from "../../utils/useProductDetails";
 // import useOnlineStatus from "../../utils/useOnlineStatus";
 import "./ProductDetails.css";
 import Header from "../Header";
@@ -12,13 +12,15 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import ItemAdded from "../notifications/ItemAdded";
 import ItemInCart from "../notifications/ItemInCart";
+import useProductDetails from "@/utils/useProductDetails";
 
 function ProductDetails() {
   const [productDetailImageList, setProductDetailsImageList] = useState({});
   const [changeProductScreen, setChangeProductScreen] = useState(true)
   const [selectedImage, setSelectedImage] = useState(null);
   const [addedToCart, setAddedToCart] = useState(false);
-  const [onHover, setOnHover] = useState(false)
+  const [onHover, setOnHover] = useState(false);
+  const [showBorder, setShowBorder] = useState(false)
   // const [onBuyNowHover, setOnBuNowHover] = useState(false)
   // const [isDisabled, setIsDisabled] = useState(false)
   
@@ -33,13 +35,14 @@ function ProductDetails() {
   useEffect(() => {
     if (productDetails && productDetails.productDetailsImages) {
       setProductDetailsImageList(productDetails.productDetailsImages);
+
     }
   }, [productDetails]);
 
   const handleImageClick = (image) => {
     setSelectedImage(image);
     setChangeProductScreen(false)
-    // setProductsClick(index)
+    setShowBorder(true)
   };
 
   const isInCart = cartItems.some((item) => item.id === productDetails.id);
@@ -79,17 +82,17 @@ function ProductDetails() {
     <Header />
       <section className={`products__details__container ${addedToCart && 'opacity-2'}`}>
         <section className="products__details__content">
-          <section className="product__details__image__container">
+          <section className="">
             <img
              onClick={() => handleImageClick(productDetailImageList.imageOne)}
               // className="product__details__images"
-              className={productDetailImageList.imageOne ? "product__details__images": "border__color"}
+              className='product__details__images'
               src={`/${productDetailImageList.imageOne}`}
               alt="Product one"
             />
             <img
              onClick={() => handleImageClick(productDetailImageList.imageTwo)}
-              className="product__details__images"
+              className='product__details__images'
               src={`/${productDetailImageList.imageTwo}`}
               alt="Product two"
             />
@@ -98,10 +101,11 @@ function ProductDetails() {
               className="product__details__images"
               src={`/${productDetailImageList.imageThree}`}
               alt="Product three"
+              style={productDetailImageList.imageThree && {border: '6px', borderColor: 'black'}}
             />
             <img
             onClick={() => handleImageClick(productDetailImageList.imageFour)}
-              className={`product__details__images`}
+              className='product__details__images'
               src={`/${productDetailImageList.imageFour}`}
               alt="Product four"
             />
