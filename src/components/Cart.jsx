@@ -1,15 +1,18 @@
 import { useState, useEffect} from 'react';
-import { useDispatch, useSelector } from "react-redux"
-import { removeItem, clearCart} from "@/utils/cartSlice"
+// import { useDispatch, useSelector } from "react-redux"
+// import { removeItem, clearCart} from "@/utils/cartSlice"
 import Header from "./Header";
 import { motion } from 'framer-motion'
+import { useCart } from '../custom/useCart';
 
 const Cart = () => {
   const [showAnimation, setShowAnimation] = useState(false)
-  const dispatch = useDispatch();
-  const cartItems = useSelector((store) => store.cart.items)
-  const count = useSelector((store) => store.itemQuantity.value)
+  const { cartItems, removeFromCart, clearCart, itemCount } = useCart();
+  // const dispatch = useDispatch();
+  // const cartItems = useSelector((store) => store.cart.items)
+  // const count = useSelector((store) => store.itemQuantity.value)
   // const r = count + cartItems.id
+
   const amountInCart = cartItems.map((item) => item.price)
   const getTotalAmountInCart = amountInCart.reduce((acc, curr) => {
       return  acc + curr
@@ -18,13 +21,13 @@ const Cart = () => {
    const totalAmount = getTotalAmountInCart.toFixed(2)
 
   const handleRemoveFromCart = (id) => {
-    dispatch(removeItem(id));
+    // dispatch(removeItem(id));
   };
 
-  const handleClearCart = () => {
-    dispatch(clearCart());
-    setShowAnimation(true)
-  };
+  // const clearCart = () => {
+  //   // dispatch(clearCart());
+  //   setShowAnimation(true)
+  // };
 
 
   useEffect(() => {
@@ -37,7 +40,7 @@ const Cart = () => {
       {cartItems.length === 0 ? (
         <section>
         <Header />
-        <p className='h-screen flex items-center justify-center '>Your cart is empty...</p>
+        <p className='h-screen flex items-center justify-center'>Your cart is empty...</p>
         </section>
       ) : (
 
@@ -53,17 +56,17 @@ const Cart = () => {
               <img src={image} className='w-40' alt='product-image' />
               <div>
               <h2>{name}</h2>
-              <h3>$ {price * count}</h3>
-              <h3>Item Quantity - {count * count}</h3>
-              <button onClick={() => handleRemoveFromCart(id)}>Remove</button>
+              <h3>$ {price * itemCount}</h3>
+              <h3>Item Quantity - {itemCount}</h3>
+              <button onClick={() => removeFromCart(id)}>Remove</button>
               </div>            
             </motion.li>
             )
 })}
           </ul>
-          <button onClick={handleClearCart}>Clear Cart</button> 
+          <button onClick={clearCart}>Clear Cart</button> 
           <div>
-           Total Item - ${totalAmount * count}
+           Total Item - ${totalAmount * itemCount}
           </div>
           </section>
           

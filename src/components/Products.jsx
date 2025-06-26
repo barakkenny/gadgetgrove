@@ -14,7 +14,7 @@ function Product() {
   const [products, setProducts] = useState(gadgetData);
   const [filteredProducts, setFilteredProducts] = useState(gadgetData);
   const [search, setSearch] = useState("");
-  const [activeTab, setActiveTab] = useState(null);
+  const [activeTab, setActiveTab] = useState('allProduct');
   const [activePage, setActivePage] = useState('allProduct')
   const [showTvProduct, setShowTvProduct] = useState(false)
   // const [productsClick, setProductsClick] = useState(null);
@@ -48,7 +48,7 @@ function Product() {
       <Header />
       <section className='search__container'>
 
-      <section className='w-[15%] flex flex-col gap-8 pt-20 pl-5 border-r-2 h-screen'>
+      <section className='w-[15%] fixed top-18 left-4 flex flex-col gap-8 pt-20 pl-5 border-r-2 h-screen'>
         <section className=' cursor-pointer'>
           <div className='flex items-center gap-6'>
           <LuTv />
@@ -56,7 +56,7 @@ function Product() {
           </div>
         </section>
 
-        <section className='pt-4 cursor-pointer'>
+        <section className={`pt-4 cursor-pointer ${activeTab === 'phone' && 'bg-black text-white'}`}>
         <div className='flex items-center gap-6'>
           <LuTv />
           <h3 onClick={() => setActiveTab("phone")}>Phones</h3>
@@ -94,7 +94,7 @@ function Product() {
       </section>
      
       <section className='w-[80%] mt-8'>
-        <section className='flex justify-center'>
+        <section className='flex justify-center items-center'>
       <input 
       className='search'
       type="text"
@@ -108,7 +108,7 @@ function Product() {
 
         {/* PRODUCT CATEGORY */}
       <section>
-       {activeTab === 'television' && <Television activePage={activePage} setActivePage={setActivePage} /> }          
+       {activeTab === 'television' && <Television activePage={activePage} setActivePage={setActivePage} />  }          
        {activeTab === 'phone' && <Phones activePage={activePage} setActivePage={setActivePage} /> }
        {activeTab === 'laptop' && <Laptop activePage={activePage} setActivePage={setActivePage} /> }
        {activeTab === 'camera' && <Camera activePage={activePage} setActivePage={setActivePage} /> }

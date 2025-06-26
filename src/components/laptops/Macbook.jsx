@@ -1,10 +1,10 @@
-
+import { motion } from 'framer-motion';
 
 const Macbook = () => {
   return (
-    <div>
-      Macbook
-    </div>
+    <motion.section initial={{y: 100}} animate={{y: 0}} transition={{duration: 1}}>
+          Macbook
+    </motion.section>
   )
 }
 

@@ -110,7 +110,7 @@ const appRouter = createBrowserRouter([
     ),
   },
   {
-    path: "/buy-now",
+    path: "/buy-now/:productId",
     element: (
       <Suspense fallback={<div className="h-screen flex items-center justify-center space-x-2">
         {[...Array(3)].map((_, index) => (

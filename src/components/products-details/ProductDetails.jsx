@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 // import useProductDetails from "../../utils/useProductDetails";
 // import useOnlineStatus from "../../utils/useOnlineStatus";
 import "./ProductDetails.css";
@@ -13,6 +13,7 @@ import { motion } from 'framer-motion'
 import ItemAdded from "../notifications/ItemAdded";
 import ItemInCart from "../notifications/ItemInCart";
 import useProductDetails from "@/utils/useProductDetails";
+import { useCart } from '../../custom/useCart';
 
 function ProductDetails() {
   const [productDetailImageList, setProductDetailsImageList] = useState({});
@@ -22,20 +23,19 @@ function ProductDetails() {
   const [onHover, setOnHover] = useState(false);
   const [showBorder, setShowBorder] = useState(false)
   // const [onBuyNowHover, setOnBuNowHover] = useState(false)
-  // const [isDisabled, setIsDisabled] = useState(false)
-  
+  const [isDisabled, setIsDisabled] = useState(false)
 
+  const { cartItems, addToCart, itemCount, setItemCount } = useCart();
   const productDetails = useProductDetails(gadgetData, 'gadget');
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const cartItems = useSelector((store) => store.cart.items)
-  const count = useSelector((store) => store.itemQuantity.value)
-  const isDisabled = count <= 0;
+  // const cartItems = useSelector((store) => store.cart.items)
+  // const count = useSelector((store) => store.itemQuantity.value)
+  // const isDisabled = count <= 0;
 
   useEffect(() => {
     if (productDetails && productDetails.productDetailsImages) {
       setProductDetailsImageList(productDetails.productDetailsImages);
-
     }
   }, [productDetails]);
 
@@ -46,32 +46,37 @@ function ProductDetails() {
   };
 
   const isInCart = cartItems.some((item) => item.id === productDetails.id);
+  console.log(isInCart)
 
-  const handleAddItem = (productDetails) => {
+  // function addToCart(product) {
     
-    if (!isInCart && count > 0) {
-      dispatch(addItem(productDetails));
-      setAddedToCart(true)
-      setTimeout(() => {
-        setAddedToCart(false)
-      }, 2000)
-    } 
+  //   if (!isInCart && count > 0) {
+  //     // dispatch(addItem(productDetails));
+  //     setAddedToCart(true)
+  //     setTimeout(() => {
+  //       setAddedToCart(false)
+  //     }, 2000)
+  //   } 
 
-  }
+  // }
   
 
-  const handleItemIncrement = (id)=> {
+  const handleItemIncrement = ()=> {
     if(!isInCart) {
-      dispatch(incrementItem(id))
+      // dispatch(incrementItem(id))
+      setItemCount((prev) => prev + 1)
     }
   }
 
+  
 
   const handleItemDecrement = ()=> {
     if(!isInCart) {
-      dispatch(decrementItem())
+      // dispatch(decrementItem())
+      setItemCount((prev) => prev - 1)
     }
   }
+
 
   // const onlineStatus = useOnlineStatus();
   // if(!onlineStatus) return <div>You are offline</div>
@@ -148,22 +153,23 @@ function ProductDetails() {
             <div className="flex items-center gap-6 mt-7">
               <div className="flex gap-4 border-2  py-2">
                 <button onClick={handleItemDecrement} className="text-lg font-bold px-4 border-r-2">-</button>
-                <h3 className="text-lg font-bold px-4">{count}</h3>
-                <button onClick={()=> handleItemIncrement(productDetails.id)} className="text-lg font-bold px-4 border-l-2">+</button>
+                <h3 className="text-lg font-bold px-4">{itemCount}</h3>
+                <button onClick={handleItemIncrement} className="text-lg font-bold px-4 border-l-2">+</button>
               </div>
               <div className='flex gap-6'>
-              <Link to={isDisabled ? "#" : "/buy-now"}><button onClick={(e) => isDisabled && e.preventDefault()} className={` ${onHover ? 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' : 'bg-black text-white px-7 py-3 cursor-pointer'}`} onMouseOver={()=>setOnHover(true)} onMouseLeave={()=> setOnHover(false)}>Buy Now</button></Link>
-            <motion.button whileTap={{scale: 0.8, backgroundColor: 'crimson', border: 'none'}} transition={{type: 'spring', stiffness: 300}} className={`${onHover ? 'bg-black text-white px-5 py-2.5': 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer'} `} onClick={()=>handleAddItem(productDetails)}>Add to Cart</motion.button>
+              {/* <Link to={isDisabled ? "#" : "/buy-now"}><button onClick={(e) => isDisabled && e.preventDefault()} className={` ${onHover ? 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' : 'bg-black text-white px-7 py-3 cursor-pointer'}`} onMouseOver={()=>setOnHover(true)} onMouseLeave={()=> setOnHover(false)}>Buy Now</button></Link>
+            <motion.button whileTap={{scale: 0.8, backgroundColor: 'crimson', border: 'none'}} transition={{type: 'spring', stiffness: 300}} className={`${onHover ? 'bg-black text-white px-5 py-2.5': 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer'} `} onClick={()=>handleAddItem(productDetails)}>Add to Cart</motion.button> */}
+            <Link to={isDisabled ? "#" : `/buy-now/${productDetails.id}`}><button className={` ${onHover ? 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer' : 'bg-black text-white px-7 py-3 cursor-pointer'}`} onMouseOver={()=>setOnHover(true)} onMouseLeave={()=> setOnHover(false)}>Buy Now</button></Link>
+            <motion.button onClick={()=>addToCart(productDetails)} whileTap={{scale: 0.8, backgroundColor: 'crimson', border: 'none'}} transition={{type: 'spring', stiffness: 300}} className={`${onHover ? 'bg-black text-white px-5 py-2.5': 'bg-white text-black px-5 py-2.5 border-2 border-black cursor-pointer'} `}>Add to Cart</motion.button>
             </div>
             </div>
-
             </section>
             
         </section>
-        <div>
-        {addedToCart &&
+        {/* <div>
+        {addToCart &&
         <div><ItemAdded /></div> }
-        </div>
+        </div> */}
       </section>
       </>
    ); 

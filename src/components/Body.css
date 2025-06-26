@@ -64,13 +64,13 @@
 }
 
 .items__card__content:hover{
-    border: 1px solid rgb(185, 179, 179);
+    border: 1px solid #eeeef1;
 }
 
 .items__image{
     width: 280px;
     height: 230px;
-    background-color: rgb(238, 238, 241);
+    background-color: #eeeef1;
     padding-top: 1rem;
 }
 

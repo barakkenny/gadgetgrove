@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
 import "./Header.css";
 import { Link } from 'react-router-dom';
+import { useCart } from '../custom/useCart'
 
 function Header() {
-const cartItems = useSelector((store) => store.cart.items)
+  const { cartItems } = useCart();
 
   return (
     <section className="header__container sticky top-0 z-50">

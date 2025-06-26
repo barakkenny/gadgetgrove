@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { gadgetData } from "../utils/data";
 import { Link } from "react-router-dom";
 import "./Body.css";
