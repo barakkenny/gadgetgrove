@@ -1,15 +1,22 @@
-import {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom';
+import {useEffect, useState, useContext} from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 // import { IoIosStar } from "react-icons/io";
 import { IoIosStarOutline } from "react-icons/io";
+import { AppContext } from '@/context/AppProvider';
 
 const ProductDetails = () => {
   const [products, setProducts] = useState({})
   const {id} = useParams();
+  const {count, setCount, cartItems, setCartItems} = useContext(AppContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
       fetchProducts();
   },[id])
+
+    useEffect(() => {
+      localStorage.setItem("cart", JSON.stringify(cartItems))
+    },[cartItems])
   
   const fetchProducts = async () => {
           try {
@@ -21,6 +28,28 @@ const ProductDetails = () => {
           console.error('Error fetching products:', error);
       }
     } 
+
+    const addToCart = () => {
+      if(count > 0){
+        setCartItems((prev) => [...prev, products]);
+        console.log('Item added', cartItems)
+      
+    }else{
+      console.log('add at least one item')
+    }
+  }
+    const itemCountIncrement = () => {
+       setCount((prev) => prev + 1)
+    }
+
+    const itemCountDecrement = () => {
+       setCount((prev) => prev - 1)
+    }
+
+    const buyNowPage = () => {
+      navigate('/buy-now')
+    }
+
   return (
     <div className="mt-10 mx-20 flex gap-20">
       <div className='bg-slate-200 w-[600px] p-5'>
@@ -40,14 +69,14 @@ const ProductDetails = () => {
      <h2 className='w-96'>{products.description}</h2>
 
      <div className='flex items-center gap-5 mt-7 '>
-      <button className='border-2 font-bold text-2xl px-3 pb-1 bg-slate-100'>-</button>
-      <h1 className='text-2xl font-semibold'>0</h1>
-      <button className='border-2 font-bold text-2xl px-3 pb-1 bg-slate-100'>+</button>
+      <button onClick={itemCountDecrement} className='border-2 font-bold text-2xl px-3 pb-1 bg-slate-100'>-</button>
+      <h1 className='text-2xl font-semibold'>{count}</h1>
+      <button onClick={itemCountIncrement} className='border-2 font-bold text-2xl px-3 pb-1 bg-slate-100'>+</button>
      </div>
 
      <div className='flex items-center gap-10 mt-10'>
-      <button className='font-medium border-2 border-black px-7 py-3 text-md text-black'>Buy Now</button>
-      <button className='bg-black font-medium text-white px-7 py-3'>Add to Cart</button>
+      <button onClick={buyNowPage} className='font-medium border-2 border-black px-7 py-3 text-md text-black'>Buy Now</button>
+      <button onClick={addToCart} className='bg-black font-medium text-white px-7 py-3'>Add to Cart</button>
      </div>
      </div>
     </div>
